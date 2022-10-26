@@ -13,8 +13,8 @@ IFS='/' read -ra REF <<< "${ref[2]}"
 branch="${REF[2]}"
 
 if [ $branch == "main" ]; then
-crumb=$(curl -u "admin:admin" -s 'http://localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
-curl -u "admin:admin" -H "$crumb" -X POST http://localhost:8080/job/maven-git/build?delay=0sec
+crumb=$(curl -u "jenkins:admin" -s 'http://localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+curl -u "jenkis:admin" -H "$crumb" -X POST http://localhost:8080/job/maven-git/build?delay=0sec
 
   if [ $? -eq 0 ] ; then
     echo "*** Ok"
